@@ -1,7 +1,7 @@
 {
   "name": "tnl",
   "version": "0.0.1",
-  "description": "Cloud-based serial terminal.",
+  "description": "Reverse-tcp serial tunnel for remote serial administration.",
   "main": "bootstrap.js",
   "scripts": {
     "start": "node_modules/.bin/pm2 start pm2.json",
