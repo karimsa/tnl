@@ -1,4 +1,6 @@
 {
   "SERVER_HOST": "tnl.alibhai.co",
-  "SERVER_PORT": 8093
+  "SERVER_PORT": 8093,
+  "DEV_VID": "0x050d",
+  "DEV_PID": "0x0109"
 }
