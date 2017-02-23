@@ -9,7 +9,8 @@
     "stop": "node_modules/.bin/pm2 stop tnl",
     "clean": "node_modules/.bin/pm2 delete tnl",
     "monit": "node_modules/.bin/pm2 monit",
-    "logs": "node_modules/.bin/pm2 logs --raw"
+    "logs": "node_modules/.bin/pm2 logs --raw",
+    "startup": "node_modules/.bin/pm2 startup && node_modules/.bin/pm2 save"
   },
   "repository": {
     "type": "git",

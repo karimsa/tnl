@@ -48,6 +48,9 @@ should install your dependencies and get the client running via pm2. You can con
 that the client started successfully by running `npm run monit` and your script should
 be visible. Don't worry aboutt the errors that show up in the log, they're expected.
 
+*Once you spin up the client, you may wish to configure it to run on startup. This can
+be done via pm2. Simply run `npm run startup`.*
+
 ### Server setup
 
 You'll need:
