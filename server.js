@@ -20,8 +20,8 @@ const server = require('tls').createServer({
 
   requestCert: true,
   rejectUnauthorized: true,
-  
-  ca: [ fs.readFileSync(path.resolve(__dirname, 'ssl', 'client.key')) ]
+
+  ca: [ fs.readFileSync(path.resolve(__dirname, 'ssl', 'client.crt')) ]
 }, sock => {
   console.log('Connected! Welcome.')
   server.close()
