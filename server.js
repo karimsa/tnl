@@ -9,6 +9,7 @@ const fs = require('fs')
     , path = require('path')
     , tty = require('tty')
     , emoji = require('node-emoji')
+    , log = require('util').debuglog('serial')
     , { SERVER_PORT, BAUD_RATE, DATA_BITS, PARITY, STOP_BITS } = require('./config')
 
 /**
@@ -40,7 +41,7 @@ const server = require('tls').createServer({
 
   ca: [ fs.readFileSync(path.resolve(__dirname, 'ssl', 'client.crt')) ]
 }, sock => {
-  console.log('\nConnected! Welcome.')
+  console.log('\nConnected! Welcome. (Ctl+C to close)\n')
   isConnected = true
   server.close()
 
@@ -86,6 +87,7 @@ const server = require('tls').createServer({
   process.stdin.resume()
   process.stdin.setRawMode(true)
   process.stdin.on('data', s => {
+    log('Got data: (%j)', s)
     if (s[0] === 0x03) {
       sock.end()
       process.exit(0)
