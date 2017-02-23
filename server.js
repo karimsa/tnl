@@ -18,11 +18,13 @@ let isConnected = false
 let index = -1
 const ns = n => { return [... new Array(n)].map(_ => ' ').join('') }
 const animate = () => {
+  if (isConnected) return;
+
   index ++
   if (index === 3) index = 0
 
   process.stdout.write('\rWaiting for connection ... ' + emoji.get('desktop_computer') + '  ' + ns(index) + emoji.get('yin_yang') + ns(2 - index) + '  ' + emoji.get('desktop_computer'))
-  if (!isConnected) setTimeout(animate, 250)
+  setTimeout(animate, 250)
 }
 
 /**
