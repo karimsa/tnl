@@ -58,6 +58,10 @@ You can now clone the repo locally, as long as you copy `ssl/client.crt` from yo
 device to your server. Grab the dependencies by running `npm install`. Whenever you'd like
 to connect to your serial device, simply run `node server`.
 
+*Note: Before each run of `node server`, you can edit the local `config.json` file to change
+your serial settings like baud rate and parity. These options are not read from file on the client,
+they're sent when you connect. So don't worry if you have to make changes on the fly.*
+
 ## License
 
 Licensed under [MIT license](LICENSE).
