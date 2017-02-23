@@ -13,14 +13,14 @@ const net = require('net')
   const SERVER_HOST = await require('./lib/find')()
       , sock = await require('./lib/connect')(SERVER_HOST, SERVER_PORT)
       , port = await require('./lib/port')()
-  
+
   // first packet of data should be considered configuration
   sock.once('data', config => {
     try {
       port = new Port(port, JSON.parse(config))
 
       process.stdin.resume()
-      process.stdin.setRaw(true)
+      process.stdin.setRawMode(true)
       process.stdin.on('data', s => {
         if (s[0] === 0x03) {
           port.close()
