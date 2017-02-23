@@ -24,6 +24,18 @@ use a raspberry pi 3). Now adjust the configuration by editing 'config.json'.
 If you are using this remotely, I recommend get a [keymetrics](http://keymetrics.io)
 account and [linking your client device](http://docs.keymetrics.io/docs/usage/setup/).
 
+If you don't know the vendor ID and product ID of your serial adapter off by heart,
+you should plug the device in, and run `npm run devices` and you will see a list of
+devices that looks something like this:
+
+```sh
+$ npm run devices
+[vid:pid] My Serial Adapter (/dev/cu.adapter)
+```
+
+Once you figure out which one is yours, save the 'vid' and 'pid' as the `DEV_VID`
+and `DEV_PID` in `config.json`.
+
 Next, you're going to want to generate SSH key & certificate pair that is unique to
 your setup. To do this, go to the `ssl/` folder in this repo and run `./gen.sh`. You
 will need to put your server behind some domain for the code to work and for proper SSL
