@@ -20,6 +20,12 @@ openssl x509 -req -in server.csr -signkey server.key -out server.crt
 # generate private key
 openssl genrsa -out client.key $MOD
 
+# generate signing request
+openssl req -new -sha256 -key client.key -out client.csr
+
 # remove passphrase from key
 mv client.key client.key.org
 openssl rsa -in client.key.org -out client.key
+
+# generate certificate
+openssl x509 -req -in client.csr -signkey client.key -out client.crt

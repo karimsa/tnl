@@ -5,8 +5,7 @@
  * Copyright (C) 2017 Karim Alibhai.
  */
 
-const net = require('net')
-    , Port = require('serialport')
+const Port = require('serialport')
     , { SERVER_PORT } = require('./config')
 
 ;(async function () {
