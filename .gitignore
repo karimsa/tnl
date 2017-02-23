@@ -1,2 +1,4 @@
 node_modules
 *.log
+ssl/server.*
+ssl/client.*
