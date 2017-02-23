@@ -1,5 +1,6 @@
 [{
   "name": "tnl",
   "script": "bootstrap.js",
-  "instances": "1"
+  "instances": "1",
+  "exec_mode": "fork_mode"
 }]
