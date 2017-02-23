@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node_modules/.bin/pm2 start pm2.json",
     "stop": "node_modules/.bin/pm2 stop tnl",
-    "clean": "node_modules/.bin/pm2 delete tnl"
+    "clean": "node_modules/.bin/pm2 delete tnl",
+    "monit": "node_modules/.bin/pm2 monit",
+    "logs": "node_modules/.bin/pm2 logs --raw"
   },
   "repository": {
     "type": "git",
