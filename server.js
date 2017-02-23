@@ -8,7 +8,22 @@
 const fs = require('fs')
     , path = require('path')
     , tty = require('tty')
+    , emoji = require('node-emoji')
     , { SERVER_PORT } = require('./config')
+
+/**
+ * Loading animation.
+ */
+let isConnected = false
+let index = -1
+const ns = n => { return [... new Array(n)].map(_ => ' ').join('') }
+const animate = () => {
+  index ++
+  if (index === 3) index = 0
+
+  process.stdout.write('\rWaiting for connection ... ' + emoji.get('desktop_computer') + '  ' + ns(index) + emoji.get('yin_yang') + ns(2 - index) + '  ' + emoji.get('desktop_computer'))
+  if (!isConnected) setTimeout(animate, 250)
+}
 
 /**
  * Create a secure server that accepts authentication
@@ -62,4 +77,4 @@ const server = require('tls').createServer({
 })
 
 server.on('error', err => console.error('! %s', err))
-server.listen(SERVER_PORT, () => console.log('* Awaiting connection on :%s ...', SERVER_PORT))
+server.listen(SERVER_PORT, animate)
