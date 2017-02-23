@@ -40,10 +40,8 @@ Next, you're going to want to generate SSH key & certificate pair that is unique
 your setup. To do this, go to the `ssl/` folder in this repo and run `./gen.sh`. You
 will need to put your server behind some domain for the code to work and for proper SSL
 verification (configure this as your `SERVER_HOST` above). It also saves you money on buying
-a static IP for your network since you can just change your IP on the domain. Make sure that
-the domain you choose to use is the same one that you provide to `openssl` when generating
-your certificate pair for the server. Once you have your keypair, keep it safe. It'll be your
-only means of authentication.
+a static IP for your network since you can just change your IP on the domain. Once you have
+your keypair, keep it safe. It'll be your only means of authentication.
 
 Once you are satisfied with your config, run `npm install && npm start` which
 should install your dependencies and get the client running via pm2. You can confirm
