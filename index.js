@@ -6,6 +6,8 @@
  */
 
 const Port = require('serialport')
+    , tty = require('tty')
+    , log = require('util').debuglog('tnl')
     , { SERVER_PORT } = require('./config')
 
 ;(async function () {
@@ -18,16 +20,23 @@ const Port = require('serialport')
   sock.once('data', config => {
     try {
       port = new Port(port, JSON.parse(config))
+      
+      // tty-ify the socket
+      sock.isTTY = true
+      sock.getWindowSize = () => {
+        let { rows, cols } = process.stdout
+        return [rows, cols]
+      }
+      sock.cursorTo = tty.WriteStream.prototype.cursorTo
+      sock.clearLine = tty.WriteStream.prototype.clearLine
+      sock.moveCursor = tty.WriteStream.prototype.moveCursor
+      sock._emitKey = tty.ReadStream.prototype._emitKey
+      sock.on('data', b => sock._emitKey(b))
 
-      process.stdin.resume()
-      process.stdin.setRawMode(true)
-      process.stdin.on('data', s => {
-        if (s[0] === 0x03) {
-          port.close()
-          process.exit(0)
-        } else {
-          port.write(s)
-        }
+      // pipe from socket to the serial port
+      sock.on('data', d => {
+        log('Got data: (%j)', d)
+        port.write(d)
       })
 
       port.on('data', (data) => sock.write(data.toString()))

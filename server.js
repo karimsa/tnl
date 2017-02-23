@@ -9,7 +9,7 @@ const fs = require('fs')
     , path = require('path')
     , tty = require('tty')
     , emoji = require('node-emoji')
-    , log = require('util').debuglog('serial')
+    , log = require('util').debuglog('tnl')
     , { SERVER_PORT, BAUD_RATE, DATA_BITS, PARITY, STOP_BITS } = require('./config')
 
 /**
