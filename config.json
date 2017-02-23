@@ -2,5 +2,10 @@
   "SERVER_HOST": "tnl.alibhai.co",
   "SERVER_PORT": 8093,
   "DEV_VID": "0x050d",
-  "DEV_PID": "0x0109"
+  "DEV_PID": "0x0109",
+
+  "BAUD_RATE": 9600,
+  "DATA_BITS": 8,
+  "PARITY": "none",
+  "STOP_BITS": 1
 }

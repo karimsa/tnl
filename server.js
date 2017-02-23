@@ -9,7 +9,7 @@ const fs = require('fs')
     , path = require('path')
     , tty = require('tty')
     , emoji = require('node-emoji')
-    , { SERVER_PORT } = require('./config')
+    , { SERVER_PORT, BAUD_RATE, DATA_BITS, PARITY, STOP_BITS } = require('./config')
 
 /**
  * Loading animation.
@@ -40,6 +40,16 @@ const server = require('tls').createServer({
 }, sock => {
   console.log('Connected! Welcome.')
   server.close()
+
+  /**
+   * Send config.
+   */
+  sock.write(new Buffer(JSON.stringify({
+    baudRate: BAUD_RATE,
+    dataBits: DATA_BITS,
+    parity: PARITY,
+    stopBits: STOP_BITS
+  }), 'utf8'))
 
   /**
    * Setup socket to work as a tty.
