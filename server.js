@@ -68,20 +68,6 @@ const server = require('tls').createServer({
   }), 'utf8'))
 
   /**
-   * Setup socket to work as a tty.
-   */
-  //sock.isTTY = true
-  //sock.getWindowSize = () => {
-  //  let { rows, cols } = process.stdout
-  //  return [rows, cols]
-  //}
-  //sock.cursorTo = tty.WriteStream.prototype.cursorTo
-  //sock.clearLine = tty.WriteStream.prototype.clearLine
-  //sock.moveCursor = tty.WriteStream.prototype.moveCursor
-  //sock._emitKey = tty.ReadStream.prototype._emitKey
-  //sock.on('data', b => sock._emitKey(b))
-
-  /**
    * Setup stdin to work as a tty.
    */
   process.stdin.resume()
