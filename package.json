@@ -1,0 +1,27 @@
+{
+  "name": "tnl",
+  "version": "0.0.1",
+  "description": "Cloud-based serial terminal.",
+  "main": "bootstrap.js",
+  "scripts": {
+    "start": "node_modules/.bin/pm2 start pm2.json",
+    "stop": "node_modules/.bin/pm2 stop tnl",
+    "clean": "node_modules/.bin/pm2 delete tnl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karimsa/tnl.git"
+  },
+  "author": "Karim Alibhai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karimsa/tnl/issues"
+  },
+  "homepage": "https://github.com/karimsa/tnl#readme",
+  "dependencies": {
+    "babel-preset-es2017": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "forever": "^0.15.3",
+    "serialport": "^4.0.7"
+  }
+}
