@@ -42,7 +42,7 @@ const server = require('tls').createServer({
 }, sock => {
   console.log('\nConnected! Welcome.')
   isConnected = true
-  server.end()
+  server.close()
 
   /**
    * Event handling.
