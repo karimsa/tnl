@@ -38,8 +38,21 @@ const server = require('tls').createServer({
 
   ca: [ fs.readFileSync(path.resolve(__dirname, 'ssl', 'client.crt')) ]
 }, sock => {
-  console.log('Connected! Welcome.')
+  console.log('\nConnected! Welcome.')
+  isConnected = true
   server.close()
+
+  /**
+   * Event handling.
+   */
+  sock.on('close', () => {
+    console.log('Connection closed.')
+    process.exit(-1)
+  })
+  sock.on('error', err => {
+    console.error('! %s', err)
+    process.exit(-1)
+  })
 
   /**
    * Send config.
