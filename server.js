@@ -41,7 +41,7 @@ const server = require('tls').createServer({
 
   ca: [ fs.readFileSync(path.resolve(__dirname, 'ssl', 'client.crt')) ]
 }, sock => {
-  console.log('\nConnected! Welcome. (Ctl+C to close)\n')
+  console.log('\nConnected! Welcome. (Ctl+] to close)\n')
   isConnected = true
   server.close()
 
@@ -74,7 +74,7 @@ const server = require('tls').createServer({
   process.stdin.setRawMode(true)
   process.stdin.on('data', s => {
     log('Got data: (%j)', s)
-    if (s[0] === 0x03) {
+    if (s[0] === 29) {
       sock.end()
       process.exit(0)
     } else {
