@@ -4,6 +4,7 @@
   "description": "Reverse-tcp serial tunnel for remote serial administration.",
   "main": "bootstrap.js",
   "scripts": {
+    "devices": "node -e \"require('serialport').list((e,l)=>l.forEach(p=>console.log('[%s:%s] %s (%s)',p.vendorId,p.productId,p.pnpId,p.comName)))\"",
     "start": "node_modules/.bin/pm2 start pm2.json",
     "stop": "node_modules/.bin/pm2 stop tnl",
     "clean": "node_modules/.bin/pm2 delete tnl",
