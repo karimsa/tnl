@@ -11,7 +11,8 @@ const Port = require('serialport')
 ;(async function () {
   const SERVER_HOST = await require('./lib/find')()
       , sock = await require('./lib/connect')(SERVER_HOST, SERVER_PORT)
-      , port = await require('./lib/port')()
+
+  let port = await require('./lib/port')()
 
   // first packet of data should be considered configuration
   sock.once('data', config => {
